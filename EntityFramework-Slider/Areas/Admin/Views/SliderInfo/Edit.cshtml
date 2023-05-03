@@ -1,0 +1,42 @@
+﻿@model SliderInfoUpdateVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="container my-5">
+    <h1>Edit</h1>
+
+    <div class="img-detail">
+        <img class="img-fluid" src="~/img/@Model.SignatureImage" />
+    </div>
+
+    <form class="form-sample" method="post" enctype="multipart/form-data">
+        <label for="formFile" class="form-label">Choose a new image for slider</label>
+        <input type="file" class="form-control" id="customFile" asp-for="SignatureImage" />
+
+
+        <textarea class="form-control" id="slider-title-text" asp-for="Title" rows="3"></textarea>
+        <span class="text-danger" asp-validation-for="Title">@ViewBag.error</span>
+
+
+        <input type="text mt-3" class="form-control" id="customFile" asp-for="Description" />
+        <span class="text-danger" asp-validation-for="Description">@ViewBag.error</span>
+        <div class="buttons my-3">
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <a class="btn btn-light" asp-action="Index">Cancel</a>
+        </div>
+
+
+    </form>
+
+</div>
+
+@section Scripts{
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("slider-title-text");
+    </script>
+}
+
